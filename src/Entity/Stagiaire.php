@@ -6,29 +6,29 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\StagiaireRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use symfony\component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: StagiaireRepository::class)]
-// #[ApiResource(normalizationContext: ['groups' => ['get_stagiaires_info']])]
-#[ApiResource]
+#[ApiResource(normalizationContext: ['groups' => ['get_stagiaires_info']])]
+// #[ApiResource]
 class Stagiaire
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    // #[Groups(['get_stagiaires_info'])]
+    #[Groups(['get_stagiaires_info'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    // #[Groups(['get_stagiaires_info'])]
+    #[Groups(['get_stagiaires_info'])]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
-    // #[Groups(['get_stagiaires_info'])]
+    #[Groups(['get_stagiaires_info'])]
     private ?string $prenom = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    // #[Groups(['get_stagiaires_info'])]
+    #[Groups(['get_stagiaires_info'])]
     private ?\DateTimeInterface $dateNaissance = null;
 
     #[ORM\ManyToOne(inversedBy: 'stagiaires')]
